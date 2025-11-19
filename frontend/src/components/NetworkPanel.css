@@ -1,0 +1,183 @@
+.network-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 28px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+.network-panel:hover {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.network-panel h2 {
+  font-family: 'Cal Sans', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 24px 0;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.network-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.network-card {
+  background: rgba(17, 17, 24, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+
+.network-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(20, 184, 166, 0.3);
+  background: rgba(17, 17, 24, 0.7);
+}
+
+.network-icon {
+  font-size: 28px;
+  opacity: 0.9;
+}
+
+.network-info {
+  flex: 1;
+}
+
+.network-info h3 {
+  margin: 0 0 6px 0;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.network-value {
+  margin: 0;
+  font-family: 'Cal Sans', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Network Features */
+.network-features {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.feature-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 40px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.feature-badge.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(20, 184, 166, 0.15) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--success);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+}
+
+.feature-badge.inactive {
+  background: rgba(17, 17, 24, 0.5);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+}
+
+.feature-icon {
+  font-size: 18px;
+}
+
+.feature-status {
+  font-family: 'Matter Medium', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Architecture Display */
+.network-architecture {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(20, 184, 166, 0.08) 100%);
+  border-left: 3px solid var(--primary);
+  padding: 16px 20px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.network-architecture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.03), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.network-architecture p {
+  margin: 0;
+  font-family: 'Matter Medium', sans-serif;
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+}
+.network-panel {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.network-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 20px;
+}
+
+/* Rest of your existing NetworkPanel styles... */
+
