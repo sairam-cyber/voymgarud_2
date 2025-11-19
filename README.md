@@ -1,724 +1,379 @@
 
 
-# now let do the part 4 first do the documantation part then we will do the deployment
-
-Perfect! Let's create comprehensive documentation for Part 4. I'll give you all the documentation files you need.
-
-## Part 4: Documentation
-
-### 1. Main README.md
-
-Create `README.md` in your project root:
+# **README.md**
 
 ```markdown
-# Ground Control Station (GCS) - Real-Time Drone Telemetry Dashboard
+# 🚁 VyomGarud - Ground Control Station Dashboard
 
-A web-based Ground Control Station for monitoring drone telemetry in real-time using MAVLink protocol, featuring network simulation and remote connectivity concepts.
+A **real-time Ground Control Station (GCS)** system built with **Node.js**, **Express**, **Socket.IO**, **MongoDB**, and **React** to monitor drone telemetry using **MAVLink protocol** simulation.
 
-## 🎯 Features
+![Dashboard Preview](https://img.shields.io/badge/Status-Active-brightgreen)
+![Node.js](https://img.shields.io/badge/Node.js-v18+-green)
+![React](https://img.shields.io/badge/React-18.2-blue)
+![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green)
 
-### Core Functionality
-- ✅ Real-time MAVLink telemetry monitoring
-- ✅ Live charts (altitude, speed, battery)
-- ✅ Interactive GPS map with drone location
-- ✅ Status cards showing key metrics
-- ✅ WebSocket-based data streaming (2 Hz)
+---
 
-### Network Technologies
-- ✅ 4G/LTE mobile network simulation
-- ✅ ZeroTier VPN integration concept
-- ✅ WebRTC-ready architecture for video streaming
-- ✅ UDP to WebSocket protocol conversion
-- ✅ Real-time network metrics (latency, bandwidth, packet loss)
+## 📌 **Project Overview**
 
-## 🏗️ Architecture
+This project simulates a **drone Ground Control Station** that:
+- Receives **real-time MAVLink telemetry** (altitude, speed, GPS, battery, heading)
+- Displays telemetry data on a **web dashboard** with live charts and maps
+- Simulates **remote connectivity** using 4G/LTE, ZeroTier VPN, and WebRTC concepts
+- Stores telemetry history in **MongoDB** for analysis
+- Updates the dashboard every **500ms** (2 Hz rate) via **WebSocket**
 
-```
+---
 
-┌─────────┐     MAVLink/UDP    ┌─────────────┐     ZeroTier VPN    ┌─────────────┐
-│  Drone  │ ──────────────────► │  4G/LTE     │ ──────────────────► │   Backend   │
-│         │                     │  Network    │                     │   Server    │
-└─────────┘                     └─────────────┘                     └─────────────┘
-│
-│ WebSocket
-▼
-┌─────────────┐
-│   React     │
-│  Dashboard  │
-└─────────────┘
+## 🚀 **Features**
 
-```
+✅ **Real-time Telemetry Display**
+- Live updates of altitude, speed, battery, GPS coordinates, and heading
+- Visual status cards with icons
 
-## 🛠️ Tech Stack
+✅ **Network Simulation**
+- Simulates 4G/LTE connection with latency, packet loss, and bandwidth metrics
+- ZeroTier VPN and WebRTC status indicators
 
-### Backend
-- **Python 3.13**
-- **Flask** - Web framework
-- **Flask-SocketIO** - WebSocket server
-- **pymavlink** - MAVLink protocol implementation
-- **Flask-CORS** - Cross-origin resource sharing
+✅ **Interactive Charts**
+- Real-time line charts for altitude, speed, and battery level
+- Powered by Recharts library
 
-### Frontend
-- **React 18** - UI framework
-- **Socket.IO Client** - WebSocket communication
-- **Recharts** - Data visualization
-- **React-Leaflet** - Interactive maps
-- **Leaflet** - Map library
+✅ **Drone Location Map**
+- Live GPS tracking on OpenStreetMap using Leaflet
+- Updates drone marker position in real-time
 
-### Protocols & Network
-- **MAVLink** - Drone communication protocol
+✅ **Data Persistence**
+- MongoDB stores all telemetry data for historical analysis
+- REST API endpoints for fetching historical data
+
+✅ **Responsive Design**
+- Modern dark-themed UI with glassmorphism effects
+- Mobile-friendly layout
+
+---
+
+## 🛠️ **Technology Stack**
+
+### **Backend**
+- **Node.js** (v18+)
+- **Express.js** - Web server framework
+- **Socket.IO** - Real-time WebSocket communication
+- **MongoDB** - NoSQL database for telemetry storage
+- **Mongoose** - MongoDB ODM
+
+### **Frontend**
+- **React.js** (18.2)
+- **Socket.IO Client** - WebSocket client
+- **Recharts** - Data visualization library
+- **Leaflet** - Interactive maps
+- **Axios** - HTTP client for REST API calls
+
+### **Protocols & Concepts**
+- **MAVLink Protocol** - Drone telemetry standard
 - **WebSocket** - Real-time bidirectional communication
-- **UDP** - MAVLink native transport
-- **ZeroTier** (simulated) - VPN for NAT traversal
-- **WebRTC** (ready) - Low-latency video streaming
+- **4G/LTE Simulation** - Remote network connectivity
+- **ZeroTier VPN** - NAT traversal simulation
+- **WebRTC** - Low-latency streaming concept
 
-## 📦 Installation
+---
 
-### Prerequisites
-- Python 3.10+ (3.13 recommended)
-- Node.js 16+ and npm
-- Git
-
-### Backend Setup
-
-1. **Navigate to backend folder:**
-```
-
-cd backend
+## 📁 **Project Structure**
 
 ```
-
-2. **Create virtual environment:**
-```
-
-python -m venv venv
-
-```
-
-3. **Activate virtual environment:**
-```
-
-
-# Windows
-
-.\venv\Scripts\activate
-
-# Linux/Mac
-
-source venv/bin/activate
-
-```
-
-4. **Install dependencies:**
-```
-
-pip install -r requirements.txt
-
-```
-
-### Frontend Setup
-
-1. **Navigate to frontend folder:**
-```
-
-cd gcs-dashboard
-
-```
-
-2. **Install dependencies:**
-```
-
-npm install
-
-```
-
-## 🚀 Running the Application
-
-### Start Backend Server
-
-```
-
-cd backend
-.\venv\Scripts\activate  \# Windows
-python app.py
-
-```
-
-Backend will run on: `http://localhost:5000`
-
-### Start Frontend Dashboard
-
-Open a new terminal:
-
-```
-
-cd gcs-dashboard
-npm start
-
-```
-
-Frontend will run on: `http://localhost:3000`
-
-## 📊 Usage
-
-1. **Start both backend and frontend servers** as described above
-2. **Open your browser** to `http://localhost:3000`
-3. **View real-time telemetry:**
-   - Status cards show altitude, speed, battery, heading
-   - Charts display historical data
-   - Map shows live GPS location
-   - Network panel shows connection statistics
-
-## 🌐 Network Features Explained
-
-### 4G/LTE Mobile Network
-- Simulates real-world cellular connectivity
-- Displays realistic latency (30-100ms)
-- Shows bandwidth (5-20 Mbps)
-- Monitors packet loss (0-2%)
-
-### ZeroTier VPN
-- Solves NAT traversal without port forwarding
-- Provides encrypted tunnel for secure communication
-- Enables peer-to-peer connectivity through firewalls
-
-### WebRTC (Ready for Implementation)
-- Designed for low-latency video streaming
-- Supports adaptive bitrate
-- Future enhancement: Live FPV drone camera feed
-
-### WebSocket Protocol
-- Real-time bidirectional communication
-- Converts UDP MAVLink data to browser-compatible format
-- 2 Hz telemetry update rate
-
-## 📁 Project Structure
-
-```
-
-vyomgarud-assigmnent/
-├── backend/
-│   ├── app.py                    \# Flask server with network features
-│   ├── mavlink_handler.py        \# MAVLink telemetry simulator
-│   ├── requirements.txt          \# Python dependencies
-│   └── venv/                     \# Virtual environment
-├── gcs-dashboard/
+vyomgarud-gcs/
+│
+├── backend/                     # Node.js Backend
+│   ├── config/
+│   │   └── db.js               # MongoDB connection
+│   ├── models/
+│   │   ├── Telemetry.js        # Telemetry schema
+│   │   └── NetworkMetrics.js   # Network metrics schema
+│   ├── routes/
+│   │   └── telemetryRoutes.js  # REST API routes
+│   ├── utils/
+│   │   └── mavlinkSimulator.js # MAVLink data generator
+│   ├── .env                    # Environment variables
+│   ├── server.js               # Main server file
+│   └── package.json            # Backend dependencies
+│
+├── frontend/                    # React Frontend
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── TelemetryDashboard.js
-│   │   │   ├── StatusCards.js
-│   │   │   ├── TelemetryCharts.js
-│   │   │   ├── DroneMap.js
-│   │   │   ├── NetworkPanel.js   \# Network metrics display
-│   │   │   └── *.css
+│   │   │   ├── TelemetryDashboard.js    # Main dashboard
+│   │   │   ├── TelemetryDashboard.css
+│   │   │   ├── StatusCards.js           # Status cards
+│   │   │   ├── StatusCards.css
+│   │   │   ├── TelemetryCharts.js       # Charts component
+│   │   │   ├── TelemetryCharts.css
+│   │   │   ├── DroneMap.js              # Map component
+│   │   │   ├── DroneMap.css
+│   │   │   ├── NetworkPanel.js          # Network panel
+│   │   │   ├── NetworkPanel.css
+│   │   │   ├── ConnectionStatus.js      # Connection status
+│   │   │   └── ConnectionStatus.css
 │   │   ├── App.js
+│   │   ├── App.css
 │   │   └── index.js
-│   ├── package.json
-│   └── node_modules/
-├── NETWORK_ARCHITECTURE.md       \# Network design documentation
-└── README.md                     \# This file
-
+│   ├── .env                     # Frontend environment variables
+│   └── package.json             # Frontend dependencies
+│
+└── README.md                    # Project documentation
 ```
 
-## 🔧 Configuration
+---
 
-### Backend Configuration
+## ⚙️ **Installation & Setup**
 
-Edit `backend/app.py` to modify:
-- **Port**: Default `5000`
-- **Update rate**: Default `0.5s` (2 Hz)
-- **Network simulation**: Adjust latency/bandwidth ranges
+### **Prerequisites**
+- Node.js (v18 or higher) - [Download](https://nodejs.org/)
+- MongoDB (Local or Atlas) - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- Git
 
-### Frontend Configuration
+---
 
-Edit `src/components/TelemetryDashboard.js`:
-- **Backend URL**: Default `http://localhost:5000`
-- **Map center**: Default Rourkela, India (20.5937°N, 84.6841°E)
-
-## 📸 Screenshots
-
-### Main Dashboard
-- Real-time status cards
-- Live telemetry charts
-- Interactive GPS map
-
-### Network Panel
-- Connection type indicator
-- Latency and bandwidth metrics
-- VPN status
-- WebRTC readiness
-
-## 🔐 Security Considerations
-
-- **Production deployment**: Use HTTPS/WSS
-- **Authentication**: Implement token-based auth
-- **VPN encryption**: ZeroTier provides end-to-end encryption
-- **CORS**: Configured for local development
-
-## 🐛 Troubleshooting
-
-### Backend Issues
-
-**Port already in use:**
-```
-
-
-# Change port in app.py
-
-socketio.run(app, host='0.0.0.0', port=5001)
+### **1. Clone the Repository**
 
 ```
-
-**Module not found:**
+git clone https://github.com/yourusername/vyomgarud-gcs.git
+cd vyomgarud-gcs
 ```
 
-pip install -r requirements.txt
+---
+
+### **2. Backend Setup**
 
 ```
-
-### Frontend Issues
-
-**Connection refused:**
-- Ensure backend is running
-- Check backend URL in TelemetryDashboard.js
-
-**Map not displaying:**
-```
-
-npm install leaflet react-leaflet
-
-```
-
-## 📚 Documentation
-
-- [NETWORK_ARCHITECTURE.md](./NETWORK_ARCHITECTURE.md) - Detailed network design
-- [MAVLink Protocol](https://mavlink.io/en/) - Official MAVLink documentation
-- [ZeroTier](https://www.zerotier.com/) - VPN documentation
-
-## 🎥 Demo Video
-
-[Link to demo video will be added after recording]
-
-## 👨‍💻 Author
-
-**Your Name**  
-BTech Computer Science & Engineering  
-Research Internship - NIT Rourkela
-
-## 📄 License
-
-This project is created as part of an academic assignment.
-
-## 🙏 Acknowledgments
-
-- MAVLink Protocol Team
-- ArduPilot SITL
-- React and Flask communities
-```
-
-
-### 2. Create requirements.txt
-
-Create/Update `backend/requirements.txt`:
-
-```txt
-flask==3.0.0
-flask-socketio==5.3.5
-flask-cors==4.0.0
-pymavlink==2.4.41
-python-socketio==5.10.0
-```
-
-
-### 3. Create SETUP_GUIDE.md
-
-Create `SETUP_GUIDE.md`:
-
-```markdown
-# Setup Guide - Ground Control Station
-
-## Quick Start (5 Minutes)
-
-### Step 1: Clone the Repository
-```
-
-git clone <your-repo-url>
-cd vyomgarud-assigmnent
-
-```
-
-### Step 2: Backend Setup
-```
-
 cd backend
-python -m venv venv
-.\venv\Scripts\activate  \# Windows
-pip install -r requirements.txt
-python app.py
 
-```
-
-### Step 3: Frontend Setup
-Open a new terminal:
-```
-
-cd gcs-dashboard
-npm install
-npm start
-
-```
-
-### Step 4: Access Dashboard
-Open browser to: `http://localhost:3000`
-
-## Detailed Setup Instructions
-
-### System Requirements
-- **OS**: Windows 10/11, Linux, macOS
-- **Python**: 3.10 or higher
-- **Node.js**: 16.x or higher
-- **RAM**: 4GB minimum
-- **Browser**: Chrome, Firefox, or Edge (latest versions)
-
-### Backend Installation
-
-1. **Create Virtual Environment**
-```
-
-python -m venv venv
-
-```
-
-2. **Activate Virtual Environment**
-```
-
-
-# Windows PowerShell
-
-.\venv\Scripts\activate
-
-# Windows CMD
-
-venv\Scripts\activate.bat
-
-# Linux/Mac
-
-source venv/bin/activate
-
-```
-
-3. **Install Dependencies**
-```
-
-pip install flask==3.0.0
-pip install flask-socketio==5.3.5
-pip install flask-cors==4.0.0
-pip install pymavlink==2.4.41
-pip install python-socketio==5.10.0
-
-```
-
-Or use requirements.txt:
-```
-
-pip install -r requirements.txt
-
-```
-
-4. **Verify Installation**
-```
-
-python -c "import flask; import flask_socketio; import pymavlink; print('All packages installed!')"
-
-```
-
-### Frontend Installation
-
-1. **Install Node Modules**
-```
-
+# Install dependencies
 npm install
 
+# Create .env file
+cat > .env << EOF
+MONGODB_URI=mongodb://localhost:27017/gcs_database
+PORT=5000
+CORS_ORIGIN=*
+EOF
+
+# Start MongoDB (if using local)
+# mongod
+
+# Run the backend server
+npm run dev
 ```
 
-2. **Install Additional Dependencies (if needed)**
+**Backend will run on:** `http://localhost:5000`
+
+**Expected Console Output:**
+```
+✅ MongoDB Connected Successfully
+🚀 GCS Backend Server Started
+🌐 Server running on: http://localhost:5000
+📡 WebSocket running on: ws://localhost:5000
+📡 Telemetry: Alt=35.5m, Speed=12.3m/s, Battery=95.2%
 ```
 
-npm install socket.io-client
-npm install recharts
-npm install react-leaflet leaflet
+---
+
+### **3. Frontend Setup**
 
 ```
+cd frontend
 
-3. **Verify Installation**
-```
+# Install dependencies
+npm install
 
-npm list socket.io-client recharts react-leaflet
+# Create .env file
+cat > .env << EOF
+REACT_APP_BACKEND_URL=http://localhost:5000
+EOF
 
-```
-
-### First Run
-
-1. **Start Backend** (Terminal 1)
-```
-
-cd backend
-.\venv\Scripts\activate
-python app.py
-
-```
-
-You should see:
-```
-
-============================================================
-🚁 GROUND CONTROL STATION - BACKEND SERVER
-============================================================
-📡 MAVLink: Simulated telemetry stream
-📶 4G/LTE: Mobile network simulation
-...
-
-```
-
-2. **Start Frontend** (Terminal 2)
-```
-
-cd gcs-dashboard
+# Start the React app
 npm start
-
 ```
 
-Browser will automatically open to `http://localhost:3000`
+**Frontend will run on:** `http://localhost:3000`
 
-3. **Verify Connection**
-- Check browser console for "✅ Connected to backend"
-- Backend terminal should show "✅ Client connected"
-- Dashboard should display live telemetry data
+---
 
-## Common Issues & Solutions
+## 🌐 **API Endpoints**
 
-### Issue: Python 3.13 eventlet error
-**Solution**: Backend uses `async_mode='threading'` which is compatible
+### **REST API**
 
-### Issue: Port 5000 already in use
-**Solution**: Change port in app.py:
-```
+| Method | Endpoint                | Description                          |
+|--------|-------------------------|--------------------------------------|
+| GET    | `/`                     | Health check & API info              |
+| GET    | `/api/telemetry/latest` | Fetch last 50 telemetry records      |
+| GET    | `/api/telemetry/history`| Fetch paginated telemetry history    |
+| GET    | `/api/network/metrics`  | Fetch network metrics                |
+| GET    | `/api/status`           | Drone status summary                 |
+| DELETE | `/api/telemetry/clear`  | Clear all telemetry data             |
 
-socketio.run(app, host='0.0.0.0', port=5001)
+### **WebSocket Events**
 
-```
+| Event               | Direction        | Description                          |
+|---------------------|------------------|--------------------------------------|
+| `connect`           | Client → Server  | Client connects to server            |
+| `disconnect`        | Client → Server  | Client disconnects                   |
+| `connection_status` | Server → Client  | Connection status update             |
+| `telemetry_update`  | Server → Client  | Real-time telemetry data (500ms)     |
+| `reset_simulation`  | Client → Server  | Reset simulation to initial state    |
 
-### Issue: Module not found
-**Solution**: Ensure virtual environment is activated:
-```
+---
 
-.\venv\Scripts\activate
-pip install -r requirements.txt
-
-```
-
-### Issue: Map not displaying
-**Solution**: 
-```
-
-npm install leaflet react-leaflet
+## 📊 **Data Flow Architecture**
 
 ```
-Add to public/index.html:
+┌─────────────────┐
+│  MAVLink        │
+│  Simulator      │  (Generates drone telemetry)
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  Node.js        │
+│  Backend        │  (Processes & stores data)
+│  + MongoDB      │
+└────────┬────────┘
+         │
+         │ WebSocket (Socket.IO)
+         │ + REST API
+         ▼
+┌─────────────────┐
+│  React          │
+│  Frontend       │  (Dashboard UI)
+│  Dashboard      │
+└─────────────────┘
 ```
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+**Network Layer Simulation:**
+```
+Drone → 4G/LTE → ZeroTier VPN → Backend → WebSocket → Browser
 ```
 
-### Issue: CORS errors
-**Solution**: Ensure Flask-CORS is installed and configured in app.py
+---
 
-## Development Tips
+## 🧪 **Testing**
 
-### Running in Development Mode
-
-**Backend with Auto-reload:**
-```
-
-
-# In app.py, debug=True enables auto-reload
-
-socketio.run(app, debug=True)
+### **Test Backend API**
 
 ```
-
-**Frontend with Hot-reload:**
-```
-
-
-# npm start already includes hot-reload
-
-npm start
-
-```
-
-### Testing Backend Endpoints
-
-```
-
-
-# Test HTTP endpoint
-
+# Health check
 curl http://localhost:5000/
 
-# Test network status
+# Get latest telemetry
+curl http://localhost:5000/api/telemetry/latest
 
-curl http://localhost:5000/network/status
-
+# Get drone status
+curl http://localhost:5000/api/status
 ```
 
-### Viewing Logs
+### **Test WebSocket Connection**
 
-**Backend logs**: Displayed in Terminal 1  
-**Frontend logs**: Browser Developer Console (F12)
-
-## Next Steps
-
-1. ✅ Verify both servers are running
-2. ✅ Check dashboard displays telemetry
-3. ✅ Test map interaction
-4. ✅ View network metrics
-5. ✅ Record demo video
-6. ✅ Push to GitHub
+Open browser console on `http://localhost:3000` and check for:
+```
+✅ Connected to Node.js backend: <socket-id>
+📡 Telemetry received: {altitude: 35, speed: 12, ...}
 ```
 
+---
 
-### 4. Create API_DOCUMENTATION.md
+## 🚢 **Deployment**
 
-Create `API_DOCUMENTATION.md`:
+### **Backend Deployment (Render/Railway/Heroku)**
 
-```markdown
-# API Documentation
+1. Create a new web service on Render
+2. Connect your GitHub repository
+3. Set environment variables:
+   - `MONGODB_URI` = Your MongoDB Atlas connection string
+   - `PORT` = 5000
+   - `CORS_ORIGIN` = Your frontend URL
+4. Deploy!
 
-## Backend REST Endpoints
+### **Frontend Deployment (Vercel/Netlify)**
 
-### GET /
-Get backend status and capabilities
+1. Connect your GitHub repository to Vercel
+2. Set build command: `npm run build`
+3. Set output directory: `build`
+4. Add environment variable:
+   - `REACT_APP_BACKEND_URL` = Your backend URL
+5. Deploy!
 
-**Response:**
-```
+---
 
-{
-"status": "GCS Backend Running",
-"version": "1.0.0",
-"mode": "SIMULATION",
-"network_features": {
-"4G_LTE": "Mobile network simulation",
-"VPN": "ZeroTier virtual network (simulated)",
-"WebRTC": "Low-latency streaming ready",
-"UDP": "MAVLink native protocol support"
-}
-}
+## 🎥 **Demo Video**
 
-```
+[📹 Watch Demo Video](https://your-demo-video-link.com)
 
-### GET /network/status
-Get current network statistics
+**Demo Includes:**
+- Live telemetry streaming
+- Real-time chart updates
+- GPS location tracking
+- Network metrics simulation
+- MongoDB data storage
 
-**Response:**
-```
+---
 
-{
-"connection_type": "4G/LTE",
-"latency": 45,
-"packet_loss": 0.8,
-"bandwidth": 12.5,
-"vpn_enabled": true,
-"vpn_type": "ZeroTier",
-"webrtc_active": false
-}
+## 📸 **Screenshots**
 
-```
+### **Main Dashboard**
+![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+Screenshot)
 
-## WebSocket Events
+### **Telemetry Charts**
+![Charts](https://via.placeholder.com/800x400?text=Charts+Screenshot)
 
-### Client → Server
+### **Drone Location Map**
+![Map](https://via.placeholder.com/800x400?text=Map+Screenshot)
 
-#### connect
-Triggered when client connects to server
+---
 
-**Server Response:** `connection_response` event
+## 🤝 **Contributing**
 
-#### disconnect
-Triggered when client disconnects
+Contributions are welcome! Please follow these steps:
 
-### Server → Client
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-#### connection_response
-Sent when client successfully connects
+---
 
-**Payload:**
-```
+## 📝 **License**
 
-{
-"status": "Connected",
-"mode": "SIMULATION",
-"network": {
-"connection_type": "4G/LTE",
-"latency": 45,
-"vpn_enabled": true
-}
-}
+This project is licensed under the **MIT License**.
 
-```
+---
 
-#### telemetry_update
-Real-time telemetry data (sent every 500ms)
+## 👨‍💻 **Author**
 
-**Payload:**
-```
+**Your Name**
+- GitHub: [@yourusername](https://github.com/yourusername)
+- Email: your.email@example.com
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
 
-{
-"altitude": 25.5,
-"speed": 8.3,
-"latitude": 20.593721,
-"longitude": 84.684152,
-"battery": 87.2,
-"heading": 145.3,
-"mode": "AUTO",
-"armed": true,
-"gps_fix": 3,
-"satellites": 12,
-"timestamp": 1700123456.789,
-"network": {
-"connection_type": "4G/LTE",
-"latency": 45,
-"packet_loss": 0.8,
-"bandwidth": 12.5,
-"vpn_enabled": true
-}
-}
+---
 
-```
+## 🙏 **Acknowledgments**
 
-## Data Models
+- [MAVLink Protocol](https://mavlink.io/) - Drone communication protocol
+- [Socket.IO](https://socket.io/) - Real-time WebSocket library
+- [Recharts](https://recharts.org/) - React charting library
+- [Leaflet](https://leafletjs.com/) - Interactive maps
+- [MongoDB](https://www.mongodb.com/) - NoSQL database
 
-### Telemetry Object
-| Field | Type | Unit | Description |
-|-------|------|------|-------------|
-| altitude | float | meters | Altitude above ground |
-| speed | float | m/s | Ground speed |
-| latitude | float | degrees | GPS latitude |
-| longitude | float | degrees | GPS longitude |
-| battery | float | % | Battery percentage |
-| heading | float | degrees | Compass heading (0-360) |
-| mode | string | - | Flight mode (AUTO/MANUAL/RTL) |
-| timestamp | float | seconds | Unix timestamp |
+---
 
-### Network Statistics Object
-| Field | Type | Unit | Description |
-|-------|------|------|-------------|
-| connection_type | string | - | 4G/LTE/WiFi/5G |
-| latency | int | ms | Network latency |
-| packet_loss | float | % | Packet loss percentage |
-| bandwidth | float | Mbps | Available bandwidth |
-| vpn_enabled | boolean | - | VPN connection status |
-| webrtc_active | boolean | - | WebRTC stream status |
+## 📚 **Resources**
+
+- [MAVLink Documentation](https://mavlink.io/en/)
+- [Socket.IO Docs](https://socket.io/docs/v4/)
+- [React Documentation](https://react.dev/)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [ZeroTier Network](https://www.zerotier.com/)
+
+---
 
 
